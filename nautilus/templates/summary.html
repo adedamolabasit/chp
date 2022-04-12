@@ -4,9 +4,28 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="static/css/bootstrap.min.css">
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
     <title>Document</title>
 </head>
 <body>
-    {{ query.page_summary }}
+
+     <h4>Reports</h4>
+        <p>{{ query.page_summary }}</p>
+            <h6>
+               <a href="{{ url_for('user')}}"> Recieve a full report in your inbox</a>
+            </h6>
+            <div class="container">
+            <div class="row d-flex justify-content-right my-3">
+                <div class="col-lg">
+                   <a href="{{ url_for('confirm')}}">Restart</a> 
+                </div>
+                <div class="col-lg">
+                    <a href="https://calendly.com/adedayoakinpelu/15min?month=2022-03">
+                    Speak to an Expert
+                    </a>
+                </div>
+            </div>
+            </div>
 </body>
 </html>

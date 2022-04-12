@@ -20,7 +20,7 @@ parent_heading=db.Table('parent_heading',
 class Parent(db.Model):
     id=db.Column(db.Integer,primary_key=True)
     question=db.Column(db.Text,nullable=False)
-    select=db.Column(db.Boolean(),default=False)
+    # select=db.Column(db.Boolean(),default=False)
     heading=db.relationship('Heading',secondary=parent_heading,back_populates='parent')
 
     def __repr__(self):

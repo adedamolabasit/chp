@@ -25,26 +25,10 @@ admin=Admin(app,template_mode='bootstrap3',name='Nautilus Admin')
 
 class Controllers(ModelView):
     pass
-    # def is_accessible(self):
 
-    #     if current_user.is_active:
-    #         if current_user.permission is True:
-    #             return current_user.is_authenticated 
-    #         else:
-    #             abort(403)           
-    #     else: 
-    #         abort(403)
-    
-   
- 
-
-    # def not_auth(self):
-    #     return " you are not authorized to use the Nautilus dashboard "
-
-admin.add_view(Controllers(Parent,db.session,name='what is critical to your organization when migrating to cloud'))
+admin.add_view(Controllers(Parent,db.session,name='Fisrt Question'))
 admin.add_view(Controllers(Heading,db.session,name='Heading'))
 admin.add_view(Controllers(Child1,db.session,name='child'))
-# admin
 admin.add_view(Controllers(Tree,db.session,name='First Question'))
 admin.add_view(Controllers(Branch1,db.session,name='Second Question'))
 admin.add_view(Controllers(Branch2,db.session,name='Third Question'))
@@ -65,6 +49,8 @@ def parent():
 @app.route('/options',methods=["POST"])
 def child1():
     options=request.form.getlist('check')
+    if len(options) == 1:
+        return redirect(url_for('question2',question1_id=options))
     headings=Heading.query.join(Heading.parent).filter(Parent.id.in_(options)).first()
     return render_template('child1.html',headings=headings)
 
@@ -144,21 +130,15 @@ def user():
        
         if search :
             session['user']=company_email 
-            return redirect(url_for('question1'))
+            return redirect(url_for('prompt'))
             # good user
         if not search:
-            if checkbox == 'on' :
-                db.session.add(user)
-                db.session.commit()
-                # confirm_email(user)
-                session['user']=company_email 
-                return redirect(url_for('question1'))
+            db.session.add(user)
+            db.session.commit()
+            # confirm_email(user)
+            session['user']=company_email 
+            return redirect(url_for('prompt'))
 
-            elif checkbox == 'off':
-                db.session.add(user)
-                db.session.commit()
-                session['user']=company_email 
-                return redirect(url_for('question1'))
         naut_email(user)                
     return render_template('form.html')
 
