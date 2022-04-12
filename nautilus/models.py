@@ -41,6 +41,7 @@ class Child1(db.Model):
     mail_response=db.Column(db.Text,nullable=True,default='hi')
     heading=db.relationship('Heading',secondary=heading_child1,back_populates='child1')
     def __repr__(self):
+        
             return self.question
 
 
