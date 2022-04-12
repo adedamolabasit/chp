@@ -58,7 +58,7 @@ def index():
 @app.route('/prompt')
 def prompt():
     return render_template('prompt.html')
-@app.route('/chp1/')
+@app.route('/chp1')
 def parent():
     query=Parent.query.order_by(Parent.id).all()
     return render_template('parent.html',query=query)
