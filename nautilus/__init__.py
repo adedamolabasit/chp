@@ -7,7 +7,7 @@ from flask_bcrypt import Bcrypt
 from flask_mail import Mail
 
 app=Flask(__name__)
-# app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql://owrqilwwyfvgiz:8e03610d36b446d1424950d997496f8ecb5569d415cbbc049c85d9bdca81807a@ec2-3-217-251-77.compute-1.amazonaws.com:5432/d6a7gbqujadb5d'
+app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql://wtzyegodvafvqe:5592a0206fd4d997420f01e6201a345567756caea4f66488cec2381671be061a@ec2-3-212-45-192.compute-1.amazonaws.com:5432/d2ap268nr1oibk'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS']=True
 app.config['SECRET_KEY']='shfrfkenvrdgdg6djjguigv@ft'
 db=SQLAlchemy(app)
@@ -15,8 +15,21 @@ migrate=Migrate(app,db)
 mail=Mail(app)
 bcrypt=Bcrypt(app)
 
-# login_manager = LoginManager(app)
-# login_manager.init_app(app)
+app.config['MAIL_SERVER']='smtp.googlemail.com'
+app.config['MAIL_PORT']=465
+app.config['MAIL_USE_TLS']=False
+app.config['MAIL_USE_SSL']=True
+app.config['MAIL_USERNAME']="cloudhelpprovider@gmail.com"
+app.config['MAIL_PASSWORD']="@@Health2020"
+
+
+
+
+
+db = SQLAlchemy(app)
+migrate = Migrate(app, db)
+login_manager = LoginManager(app)
+login_manager.init_app(app)
 
 
 from . import app
