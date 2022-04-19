@@ -28,15 +28,15 @@ mail=Mail(app)
 class Controllers(ModelView):
     pass
 
-admin.add_view(Controllers(Parent,db.session,name='Fisrt Question'))
-admin.add_view(Controllers(Heading,db.session,name='Heading'))
-admin.add_view(Controllers(Child1,db.session,name='child'))
-admin.add_view(Controllers(Tree,db.session,name='First Question'))
-admin.add_view(Controllers(Branch1,db.session,name='Second Question'))
-admin.add_view(Controllers(Branch2,db.session,name='Third Question'))
-admin.add_view(Controllers(Answer,db.session,name='Summary and Email body'))
-admin.add_view(Controllers(ConfirmUser,db.session,name='Email Collections'))
-admin.add_view(Controllers(AdminUser,db.session,name='Nautilus Admin'))
+admin.add_view(Controllers(Parent,db.session,name='ALL Double Collections'))
+admin.add_view(Controllers(Heading,db.session,name='Double Collections Headings'))
+admin.add_view(Controllers(Child1,db.session,name='Double Collections'))
+admin.add_view(Controllers(Tree,db.session,name='All Single Collections'))
+admin.add_view(Controllers(Branch1,db.session,name='Single collections'))
+admin.add_view(Controllers(Branch2,db.session,name='Sub Single Collection'))
+admin.add_view(Controllers(Answer,db.session,name='Single Collection Summary and Mail Summary'))
+admin.add_view(Controllers(ConfirmUser,db.session,name='User Email Collections'))
+admin.add_view(Controllers(AdminUser,db.session,name='Nautilus Administrator'))
 @app.before_request
 def before_request():
     g.user = None
@@ -73,12 +73,11 @@ def child1():
 
 @app.route('/report/<int:id>')
 def report(id):
-    session['urls']=request.path
     query=Child1.query.filter_by(id=id).first()
     if query is None:
         abort(404)
-   
     mail_session=session.get('mail',None)
+    
     if mail_session:
         active=True
         query=Child1.query.filter_by(id=id).first()
@@ -91,20 +90,12 @@ Hello,
 Thank you for taking out time to try to Cloud Help Provider (CHP).
             
                                                 CHP Team  
-             '''
+                                                           '''
         mail.send(msg)
     else:
         active=False
-
-    
+    session['urls']=request.path
     return render_template('summary-page.html',query=query,active=active)
-
-
-# config
-
-
-# admin
-
 
 
 @app.route('/nautilus-admin/sign-in',methods=['GET','POST'])
@@ -151,12 +142,14 @@ def logout():
 # user
 @app.route('/report/form',methods=['GET','POST'])
 def user():
-    path=session['urls'].rsplit('/',1)[-1]
-    illegal_path= session['urls'].rsplit('/',1)[-2]
-    if illegal_path != '/report':
-        return redirect(url_for('prompt'))
-    elif illegal_path != '/answer':
-        return redirect(url_for('prompt'))
+    paths=session.get('urls','/')
+    path=paths.rsplit('/',1)[-1]
+    illegal_path=paths.rsplit('/',1)[-2]
+    # print(illegal_path)
+    # if illegal_path != '/report':
+    #     return redirect(url_for('prompt'))
+    # if illegal_path != '/answer':
+    #     return redirect(url_for('prompt'))
     if request.method == 'POST':
         first_name=request.form.get('First-Name',None)
         last_name=request.form.get('Last-Name',None)
@@ -169,7 +162,7 @@ def user():
             if illegal_path == '/report':
                 query=Child1.query.filter_by(id=path).first()
             if illegal_path == '/answer':
-                query=Child1.query.filter_by(id=path).first()
+                query=Answer.query.filter_by(branch2_id=path).first()
             email=user.company_email
             msg = Message('Your Cloud Help Provider Test Result',
             sender='noreply@nautilustechnologies.tech',
@@ -183,13 +176,8 @@ Thank you for taking out time to try to Cloud Help Provider (CHP).
                                                 CHP Team  
              '''
             mail.send(msg)
-           
-
-            flash('Thank you! Your submission has been recieved','success')
             session['mail']=user.company_email
-            a=session.get('mail')
-            print(a)
-            return redirect(url_for('prompt'))
+            return redirect(path)
         if not search:
             db.session.add(user)
             db.session.commit()
@@ -207,13 +195,14 @@ Thank you for taking out time to try to Cloud Help Provider (CHP).
                                                 CHP Team  
              '''
             mail.send(msg)
-            return redirect(url_for('prompt'))  
+            naut_email(user)
+            return redirect(path)  
        
-    return render_template('email-collection.html')
+    return render_template('email-collection.html',path=path)
 
 
 # email track
-def naut_email(user,path):
+def naut_email(user):
     session['urls']=request.path
     
     email=user.company_email
@@ -246,12 +235,13 @@ def question3(question1_id):
 @app.route('/answer/<int:question2_id>')
 def answer(question2_id):
     session['urls']=request.path
+    illegal_path= session['urls'].rsplit('/',1)[-2]
+    print(illegal_path)
     query=Answer.query.filter_by(branch2_id=question2_id).first()
     back=query.id
     mail_session=session.get('mail',None)
     if mail_session:
         active=True
-        query=Child1.query.filter_by(id=question2_id).first()
         msg = Message('Your Cloud Help Provider Test Result',
         sender='noreply@nautilustechnologies.tech',
         recipients=[mail_session])
@@ -275,6 +265,7 @@ def confirm():
         if confirm:
             session.close()
     previous_url=session.get('urls','/')
+    session.pop('urls')
 
     return render_template('confirm.html',previous_url=previous_url)
 

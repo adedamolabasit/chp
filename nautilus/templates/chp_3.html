@@ -25,12 +25,8 @@
          <p class="">{{ queries.question }}</p>
           <span style="float:right" class="checkbox-group ml-2">
             <input value="{{ queries.id }}" type="checkbox" name="check" class="acb" />
-            <!-- <input value="{{ queries.id }}" type="checkbox" name="check[]" class="acb" id="input-main" oninvalid="setCustomValidity('Please select an option to proceed to Cloud Help Provider ')" required/> -->
-            <!-- <input value="{{ queries.id }}" type="checkbox" name="check" class="check" id="input-main" required/> -->
           </span>
         </div>
-
-        <!-- </div> -->
       </div>
       {% endfor %}
       <div class="mt-3" style="float: right;">
@@ -40,10 +36,6 @@
         <a href="{{ url_for('prompt')}}" type="submit" class="btn-light" style="border-radius: 51px;"  ><i class="fa-solid fa-angle-left fa-2x"></i></a>
       </div>
     </form>
-
-      <!-- <div class="div-block-11 second-page third">
-        <div class="text-block-9 second-page mb-3">x</div>
-      </div> -->
     </div>
   </div>
 {% endblock %}
