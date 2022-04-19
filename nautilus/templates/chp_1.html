@@ -1,0 +1,28 @@
+{% extends 'base2.html' %}
+
+
+{% block content %}
+<div class="modal-1 second-page">
+  
+    <div class="modal-1 first-page">
+        <div class="modal-body first-page">
+          <div style="border-radius: 111px; padding:2px; float: right;margin-left: 51px;">
+            <a href="{{ url_for('confirm')}}"><i class="fa-solid fa-circle-xmark fa-2x text-danger"></i></a>
+        </div>
+          <div class="div-block-24 first-page">
+            <div class="text-block-18 first-page">
+              <h3 class="text-center">
+              In 2 minutes find out what Cloud Provider suits your organizational needs best.
+            </h3>
+            </div>
+          </div>
+          <!-- <div class="div-block-21 first-page"> -->
+            <a href="{{ url_for('prompt') }}">
+            <div class="btn btn-light d-flex justify-content-center shadow-lg mt-3 mx-4 py-2 text-light" style="background-color:#5a35c7; border-radius: 66px; padding:2px; " >
+               START
+            </div>
+          </a> 
+         
+        </div>
+      </div>
+{% endblock %}

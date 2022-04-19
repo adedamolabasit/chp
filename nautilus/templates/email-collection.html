@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="modal-1 email">
+  <div class="modal-body email-collection">
+    <div class="w-container">
+      <div class="w-form">
+        <form id="email-form-2" name="email-form-2" data-name="Email Form 2" method="post" class="form">
+          <div class="w-row">
+            <div class="column w-col w-col-6 w-col-small-small-stack w-col-tiny-tiny-stack">
+              <input type="text" class="text-field-2 w-input" maxlength="256" name="First-Name" data-name="First Name" placeholder="First Name" id="First-Name" required=""></div>
+            <div class="column-2 w-col w-col-6 w-col-small-small-stack w-col-tiny-tiny-stack">
+              <input type="text" class="text-field-3 w-input" maxlength="256" name="Last-Name" data-name="Last Name" placeholder="Last Name" id="Last-Name" required=""></div>
+          </div>
+          <input type="email" class="text-field-4 w-input" maxlength="256" name="Company-Email" data-name="Company Email" placeholder="Company Email" id="Company-Email" required="">
+          <input type="text" class="text-field-5 w-input" maxlength="256" name="Company-Name" data-name="Company Name" placeholder="Company Name" id="Company-Name" required="">
+          <input type="text" class="text-field-6 w-input" maxlength="256" name="Company-Region" data-name="Company Region" placeholder="Company Region" id="Company-Region" required="">
+          <!-- <label class="w-checkbox checkbox-field-3"><input type="checkbox" name="checkbox" id="checkbox" data-name="Checkbox" class="w-checkbox-input"><span class="checkbox-label-4 w-form-label" for="checkbox">Receive Email</span> -->
+          </label>
+          <input type="submit" value="Submit"  data-wait="Please wait..." class="d-flex justify-content-center text-center submit-button-2 w-button">
+        </form>
+        <div class="w-form-done">
+                <!-- <div>Thank you! Your submission has been received!</div> -->
+        </div>
+        <div class="w-form-fail">
+          <!-- <div>Oops! Something went wrong while submitting the form.</div> -->
+        </div>
+        <div class="text-block-17"></div>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}

@@ -1,0 +1,37 @@
+{% extends 'base.html' %}
+
+
+{% block content %}
+<div class="modal-1 second-page">
+    <div class="modal-body second-page-2">
+      <div style="border-radius: 111px; padding:2px; float: right;margin-left: 51px;">
+        <a href="{{ url_for('confirm')}}"><i class="fa-solid fa-circle-xmark fa-2x text-danger"></i></a>
+    </div>
+      <div class="div-block-24 second-page">
+        <div class="text-block-18 second-page">
+           <h3 class="">What best describes you?</h3>
+        </div>
+      </div>
+      <div class="row d-flex justify-content-center">
+          <a href="{{ url_for('question1') }}">
+          <div class="btn btn-light shadow-lg mt-3 py-2 text-light text-center" style="background-color:#5a35c7; border-radius: 66px; padding:2px; " >
+         <p class="text-center text-light mx-1 px-2">
+         Little understanding of cloud computing
+         </p>
+          </div>
+          </a>
+          <a href="{{ url_for('parent') }}">
+          <div class="btn btn-light text-center shadow-lg mt-3 py-2 text-light " style="background-color:#5a35c7; border-radius: 66px; padding:2px; " >
+          <p class="text-center text-light mx-1 px-2">
+            Conversant with the cloud environment
+          </p>
+          </div>
+          </a>
+        </div>
+          <div class="mt-3 ml-3" style="float: left;">
+            <a href="{{ url_for('index')}}" type="submit" class="btn-light" style="border-radius: 51px;"  ><i class="fa-solid fa-angle-left fa-2x"></i></a>
+          </div>
+
+    </div>
+  </div>
+{% endblock %}

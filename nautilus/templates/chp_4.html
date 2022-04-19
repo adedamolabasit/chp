@@ -1,0 +1,30 @@
+{% extends 'base2.html' %}
+
+
+{% block content %}
+  <div class="modal-1 third-page">
+    <div class="modal-body third-page">
+        <div style="border-radius: 111px; padding:2px; float: right;">
+            <a href="{{ url_for('confirm')}}"><i class="fa-solid fa-circle-xmark fa-2x text-danger"></i></a>
+        </div>
+      <div class="div-block-24 third-page">
+        <div class="text-block-18 second-page third">
+            <h4 class="text-center">
+            {{ headings.heading }}
+            </h4>
+        </div>
+      </div>
+      {% for x in headings.child1 %}
+        <a href="{{ url_for('report',id=x.id) }}">
+            <div class="btn btn-light d-flex justify-content-center shadow-sm mt-1 py-1 " style="border-color:#5f36d9; border-radius: 66px; padding:2px; " >
+            <p>{{ x.question }}</p>       
+            </div>
+        </a>
+      {% endfor %}
+        <div class="mt-3 ml-3" style="float: left;">
+            <a href="{{ url_for('parent')}}" type="submit" class="btn-light" style="border-radius: 51px;"  ><i class="fa-solid fa-angle-left fa-2x"></i></a>
+          </div>
+      </div>   
+    </div>
+  </div>
+{% endblock %}

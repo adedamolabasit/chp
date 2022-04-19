@@ -20,7 +20,7 @@ parent_heading=db.Table('parent_heading',
 class Parent(db.Model):
     id=db.Column(db.Integer,primary_key=True)
     question=db.Column(db.Text,nullable=False)
-    # select=db.Column(db.Boolean(),default=False)
+    select=db.Column(db.Boolean(),default=False)
     heading=db.relationship('Heading',secondary=parent_heading,back_populates='parent')
 
     def __repr__(self):
@@ -113,11 +113,9 @@ class Branch2(db.Model):
         return f"{self.id}-{self.question}-{self.branch1.id}-{self.branch1.question}"
 class Answer(db.Model):
     id=db.Column(db.Integer,primary_key=True)
-    main=db.Column(db.Text,nullable=True)
-    answer=db.Column(db.Text,nullable=True)
+    question=db.Column(db.Text,nullable=True)
+    page_summary=db.Column(db.Text,nullable=True,default='hi')
+    mail_response=db.Column(db.Text,nullable=True,default='hi')
     branch2_id=db.Column(db.Integer,db.ForeignKey('branch2.id'),nullable='False')
-    
-    
-
     def __repr__(self):
-        return f"{self.id}-{self.main}"
+        return f"{self.id}-{self.page_summary}"
