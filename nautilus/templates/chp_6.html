@@ -15,22 +15,17 @@
     </div>
     {% for lists in query %}
     {% for queries in lists.answer1 %}
-    <!-- <div class="div-block-18 second-page _1"> -->
-      <!-- <div class="text-block-19 second-page third"> -->
           <a href="{{ url_for('question3',question1_id=queries.id) }}">
     <div class="btn btn-light d-flex justify-content-center shadow-sm mt-1 py-1 " style="border-color:#5f36d9; border-radius: 66px; padding:2px; " >     
 
      <p>{{ queries.question }}</p>
     </div>
           </a>
-
-      <!-- </div> -->
-    <!-- </div> -->
     {% endfor %}
     {% endfor %}
     
     <div class="mt-3 ml-3" style="float: left;">
-        <a href="{{ url_for('question1')}}" type="submit" class="btn-light" style="border-radius: 51px;"  ><i class="fa-solid fa-angle-left fa-2x"></i></a>
+        <a href="{{ url_for('question1')}}" type="submit" class="btn btn-light" style="border-radius: 51px;"  ><i class="fa-solid fa-angle-left fa-2x"></i></a>
       </div>
   </div>
 </div>

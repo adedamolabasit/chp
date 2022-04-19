@@ -44,9 +44,10 @@
 
  input[type=checkbox]:after {
   content: " ";
-  background-color:lavender;
-  display: inline-block;
-  visibility: visible;
+  background-color:whitesmoke;
+  display:inherit;
+  visibility:inherit;
+  
  }
 
  input[type=checkbox]:checked:after {
@@ -60,7 +61,8 @@
   <div class="modal-1 third-page">
     <div class="modal-body third-page">
       <div class="div-block-24 third-page">
-        <div class="text-block-18 second-page third">What is critical to your organization when migrating to the cloud?</div>
+        <div class="text-block-18 second-page third">
+          What is critical to your organization when migrating to the cloud?</div>
       </div>
     <form action="/options" method="POST">
       {% for queries in query %}
@@ -79,40 +81,10 @@
       <div class="div-block-11 second-page third">
         <div class="text-block-9 second-page mb-3">x</div>
       </div>
-      
-      <!-- <div class="div-block-21 second-page replica _2">
-        <div class="text-block-19 second-page _2">Security</div>
-      </div>
-      <div class="div-block-21 second-page replica _3">
-        <div class="text-block-19 second-page _3">Reliability</div>
-      </div>
-      <div class="div-block-21 second-page replica _4">
-        <div class="text-block-19 second-page _4">Operational excellence</div>
-      </div>
-      <div class="div-block-21 second-page replica _5">
-        <div class="text-block-19 second-page _5">Performance efficiency</div>
-      </div> -->
-      <!-- <div class="div-block-11 second-page third">
-        <div class="text-block-9 second-page">x</div>
-      </div> -->
+
     </div>
   </div>
   {% endblock %}
-  <div data-animation="default" data-collapse="small" data-duration="400" data-easing="ease-in" data-easing2="ease-out" role="banner" class="navbar w-nav">
-    <div class="container-2 w-container">
-      <a href="#" class="w-nav-brand"><img src="images/Logo-Nautilus.png" loading="lazy" alt="" class="image-101"></a>
-      <nav role="navigation" class="nav-menu w-nav-menu">
-        <a href="index.html" class="nav1 w-nav-link">Home</a>
-        <a href="our-specialization.html" class="nav1 w-nav-link">Our Specialization</a>
-        <a href="portfolio.html" class="nav1 w-nav-link">Case Studies</a>
-        <a href="blog.html" class="nav1 w-nav-link">Blog</a>
-        <a href="contact.html" class="nav1 w-nav-link">Contact Us</a>
-      </nav>
-      <div class="menu-button w-nav-button">
-        <div class="icon w-icon-nav-menu"></div>
-      </div>
-    </div>
-  </div>
   <div class="page-content">
     <div class="navigation-1">
       <div class="menu-wrapper">

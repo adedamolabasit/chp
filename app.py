@@ -177,7 +177,7 @@ Thank you for taking out time to try to Cloud Help Provider (CHP).
              '''
             mail.send(msg)
             session['mail']=user.company_email
-            return redirect(path)
+            return redirect(url_for('prompt'))
         if not search:
             db.session.add(user)
             db.session.commit()
@@ -196,7 +196,7 @@ Thank you for taking out time to try to Cloud Help Provider (CHP).
              '''
             mail.send(msg)
             naut_email(user)
-            return redirect(path)  
+            return redirect(url_for('prompt'))  
        
     return render_template('email-collection.html',path=path)
 
