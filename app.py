@@ -81,7 +81,7 @@ def child1():
     if len(options) == 0:
         flash('select two responses','danger')
         abort(404)
-    if len(options) > 3:
+    if len(options) > 2:
         flash('select two responses','danger')
         abort(404)
     headings=Heading.query.join(Heading.parent).filter(Parent.id.in_(options)).first()
