@@ -8,7 +8,7 @@
             <a href="{{ url_for('confirm')}}"><i class="fa-solid fa-circle-xmark fa-2x text-danger"></i></a>
         </div>
       <div class="div-block-24 third-page">
-        <div class="text-block-18 second-page third">
+        <div class="text-block-18 second-page third" style="margin-top: 81px;">
             <h4 class="text-center">
             {{ headings.heading }}
             </h4>
@@ -16,12 +16,12 @@
       </div>
       {% for x in headings.child1 %}
         <a href="{{ url_for('report',id=x.id) }}">
-            <div class="btn btn-light d-flex justify-content-center shadow-sm mt-1 py-1 " style="border-color:#5f36d9; border-radius: 66px; padding:2px; " >
+            <div class="btn btn-light d-flex justify-content-center shadow-sm  py-1 " style="border-color:#5f36d9; border-radius: 66px; padding:2px; margin-top: 11px; " >
             <p>{{ x.question }}</p>       
             </div>
         </a>
       {% endfor %}
-        <div class="ml-3" style="float: left; margin-top: 81px;">
+        <div class="ml-3" style="float: left; margin-top: 65px;">
             <a href="{{ url_for('parent')}}" type="submit" class="btn btn-light" style="border-radius: 51px;"  ><i class="fa-solid fa-angle-left fa-2x"></i></a>
           </div>
       </div>   
