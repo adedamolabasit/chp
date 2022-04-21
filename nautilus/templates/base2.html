@@ -529,14 +529,17 @@ input[type=checkbox]:checked:after {
       }
   });
   </script>
-  <script>
-    var limit = 2;
-    $('input.checkbox').on('change', function(evt) {
-        if($('#hidden input.checkbox:checked').length > limit) {
-          this.checked = false;
-        }
-    });
+  
+
+<script>
+  $('input[type=checkbox]').on('change', function (e) {
+  if ($('input[type=checkbox]:checked').length > 2) {
+      $(this).prop('checked', false);
+      alert("Sorry you can only select two at a time");
+  }
+});
 </script>
+
    <script>
     $(document).ready(function(){
 // Check/uncheck checkboxes clicking on its parent div
@@ -562,5 +565,13 @@ $('.checkbox_option input[type="checkbox"]').click(function(event){
 });
 });
 </script>
+<script>
+  var limit = 2;
+  $('input.checkbox').on('change', function(evt) {
+      if($('#hidden input.checkbox:checked').length > limit) {
+         this.checked = false;
+      }
+  });
+  </script>
 </body>
 </html>

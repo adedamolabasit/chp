@@ -57,22 +57,11 @@ def prompt():
 def parent():
     session['urls']=request.path
     # 8545 in css naut
-    query1=Parent.query.filter_by(id=1).first()
-    query2=Parent.query.filter_by(id=2).first()
-    query3=Parent.query.filter_by(id=3).first()
-    query4=Parent.query.filter_by(id=4).first()
-    query5=Parent.query.filter_by(id=5).first()
-    query={
-        'query1':query1,
-        'query2':query2,
-        'query3':query3,
-        'query4':query4,
-        'query5':query5,
-    }
+   
     queries=Parent.query.order_by(Parent.id).all()
 
 
-    return render_template('chp_3.html',query2=query,query=queries)
+    return render_template('chp_3.html',query=queries)
 @app.route('/options',methods=["POST","GET"])
 def child1():
     session['urls']=request.path
@@ -82,6 +71,8 @@ def child1():
         return redirect(url_for('question2',id=options))
     if len(options) == 0:
         return redirect(url_for('prompt'))
+    if len(options) > 3:
+        pass
     headings=Heading.query.join(Heading.parent).filter(Parent.id.in_(options)).first()
     return render_template('chp_4.html',headings=headings)
 
