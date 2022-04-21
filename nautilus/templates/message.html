@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="modal-1 second-page">
+  
+    <div class="modal-1 first-page">
+        <div class="modal-body first-page">
+          <!-- <div style="border-radius: 111px; padding:2px; float: right;margin-left: 51px;">
+            <a href="{{ url_for('confirm')}}"><i class="fa-solid fa-circle-xmark fa-2x text-danger"></i></a>
+        </div> -->
+          <div class="div-block-24 first-page">
+            <div class="text-block-18 first-page">
+              <p class="text-center mx-2">
+              An email has been sent to <strong>{{ query }}</strong> with a detailed report<br>
+              Thank you for your time
+              </p>
+            </div>
+          </div>
+          <!-- <div class="div-block-21 first-page"> -->
+            <a href="https://www.nautilus.tech/">
+            <div class="btn btn-light d-flex justify-content-center shadow-lg mt-3 mx-4 py-2 text-secondary" style="border-color:#5a35c7; border-radius: 66px; padding:2px; " >
+               End Session
+            </div>
+          </a> 
+         
+        </div>
+      </div>
+  </div>
+{% endblock %}

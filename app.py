@@ -191,7 +191,7 @@ Thank you for taking out time to try to Cloud Help Provider (CHP).
              '''
             mail.send(msg)
             session['mail']=user.company_email
-            return redirect(url_for('prompt'))
+            return redirect(url_for('message',message=user.company_email)) 
         if not search:
             db.session.add(user)
             db.session.commit()
@@ -210,11 +210,14 @@ Thank you for taking out time to try to Cloud Help Provider (CHP).
              '''
             mail.send(msg)
             naut_email(user)
-            return redirect(url_for('prompt'))  
+            return redirect(url_for('message',message=user.company_email))  
        
     return render_template('email-collection.html',path=path)
 
-
+@app.route('/message/<string:message>')
+def message(message):
+    company_email=message
+    return render_template('message.html',query=company_email)
 # email track
 def naut_email(user):
     session['urls']=request.path
@@ -278,8 +281,8 @@ def confirm():
         confirm=request.form.get('confirm')
         if confirm:
             session.close()
-    previous_url=session.get('urls','/')
-    session.pop('urls')
+    previous_url=session.get('urls')
+    
 
     return render_template('confirm.html',previous_url=previous_url)
 
