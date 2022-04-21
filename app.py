@@ -152,8 +152,101 @@ def logout():
     logout_user()
     return redirect(url_for('user'))
 
+@app.route('/form1/<int:id>',methods=['GET','POST'])
+def form1(id):
+    if request.method == 'POST':
+        paths=session.get('urls','/')
+        path=paths.rsplit('/',1)[-1]
+        first_name=request.form.get('First-Name',None)
+        last_name=request.form.get('Last-Name',None)
+        company_email=request.form.get('Company-Email',None)
+        company_name=request.form.get('Company-Name',None)
+        company_region=request.form.get('Company-Region',None)
+        user=ConfirmUser(first_name=first_name,last_name=last_name,company_email=company_email,company_name=company_name,company_region=company_region)
+        search=ConfirmUser.query.filter_by(company_email=company_email).first()
+        if user != None:
+            db.session.add(user)
+            db.session.commit()
+            query=Answer.query.join(Branch2).filter_by(id=id).first()
+            email=user.company_email
+            msg = Message('Your Cloud Help Provider Test Result',
+            sender='noreply@nautilustechnologies.tech',
+            recipients=[email])
+            msg.body=f'''
+Hello,
+{query.mail_response}
 
+            Thank you for taking out time to try to Cloud Help Provider (CHP).
+                        
+                                                            CHP Team  
+                        '''
+            mail.send(msg)
+            email=user.company_email
+            session['mail']=user.company_email
+            return redirect(url_for('message',message=email))
+    return render_template('form1.html')
+@app.route('/form2/<int:id>',methods=['GET','POST'])
+def form2(id):
+    if request.method == 'POST':
+        paths=session.get('urls','/')
+        path=paths.rsplit('/',1)[-1]
+        first_name=request.form.get('First-Name',None)
+        last_name=request.form.get('Last-Name',None)
+        company_email=request.form.get('Company-Email',None)
+        company_name=request.form.get('Company-Name',None)
+        company_region=request.form.get('Company-Region',None)
+        user=ConfirmUser(first_name=first_name,last_name=last_name,company_email=company_email,company_name=company_name,company_region=company_region)
+        search=ConfirmUser.query.filter_by(company_email=company_email).first()
+        if user != None:
+            db.session.add(user)
+            db.session.commit()
+            query=Child1.query.filter_by(id=id).first()
+            email=user.company_email
+            msg = Message('Your Cloud Help Provider Test Result',
+            sender='noreply@nautilustechnologies.tech',
+            recipients=[email])
+            msg.body=f'''
+Hello,
+{query.mail_response}
 
+            Thank you for taking out time to try to Cloud Help Provider (CHP).
+                        
+                                                            CHP Team  
+                        '''
+            mail.send(msg)
+            email=user.company_email
+            session['mail']=user.company_email
+            return redirect(url_for('message',message=email))
+    return render_template('form2.html')
+# @app.route('/form/<int:id>',methods=['GET','POST'])
+# def form2(id):
+#     if request.method == 'POST':
+#         first_name=request.form.get('First-Name',None)
+#         last_name=request.form.get('Last-Name',None)
+#         company_email=request.form.get('Company-Email',None)
+#         company_name=request.form.get('Company-Name',None)
+#         company_region=request.form.get('Company-Region',None)
+#         user=ConfirmUser(first_name=first_name,last_name=last_name,company_email=company_email,company_name=company_name,company_region=company_region)
+#         search=ConfirmUser.query.filter_by(company_email=company_email).first()
+#         if user != None:
+#             db.session.add(user)
+#             db.session.commit()
+#             query=Child1.query.filter_by(id=id).first()
+#             email=user.company_email
+#             msg = Message('Your Cloud Help Provider Test Result',
+#             sender='noreply@nautilustechnologies.tech',
+#             recipients=[email])
+#             msg.body=f'''
+#     Hello,
+#     {query.mail_response}
+
+#     Thank you for taking out time to try to Cloud Help Provider (CHP).
+                
+#                                                     CHP Team  
+#                 '''
+#             mail.send(msg)
+#             session['mail']=user.company_email
+#         return render_template('form2.html')
 
 # user
 @app.route('/report/form',methods=['GET','POST'])
@@ -251,6 +344,7 @@ def user():
 @app.route('/message/<string:message>')
 def message(message):
     company_email=message
+    
     return render_template('message.html',query=company_email)
 # email track
 def naut_email(user):
@@ -319,6 +413,8 @@ def confirm():
     
 
     return render_template('confirm.html',previous_url=previous_url)
+
+
 
 
 if __name__ == "__main__":
