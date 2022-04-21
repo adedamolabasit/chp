@@ -177,8 +177,44 @@ def user():
         if search :
             if illegal_path == '/report':
                 query=Child1.query.filter_by(id=path).first()
+                email=user.company_email
+                msg = Message('Your Cloud Help Provider Test Result',
+                sender='noreply@nautilustechnologies.tech',
+                recipients=[email])
+                msg.body=f'''
+    Hello,
+    {query.mail_response}
+
+    Thank you for taking out time to try to Cloud Help Provider (CHP).
+                
+                                                    CHP Team  
+                '''
+                mail.send(msg)
+                session['mail']=user.company_email
+                return redirect(url_for('message',message=user.company_email)) 
             if illegal_path == '/answer':
                 query=Answer.query.filter_by(branch2_id=path).first()
+                email=user.company_email
+                msg = Message('Your Cloud Help Provider Test Result',
+                sender='noreply@nautilustechnologies.tech',
+                recipients=[email])
+                msg.body=f'''
+    Hello,
+    {query.mail_response}
+
+    Thank you for taking out time to try to Cloud Help Provider (CHP).
+                
+                                                    CHP Team  
+                '''
+                mail.send(msg)
+                session['mail']=user.company_email
+                return redirect(url_for('message',message=user.company_email)) 
+        if not search:
+            db.session.add(user)
+            db.session.commit()
+            path=session['urls'].rsplit('/','1')[-1]
+            if illegal_path == '/report':
+                query=Child1.query.filter_by(id=path).first()
             email=user.company_email
             msg = Message('Your Cloud Help Provider Test Result',
             sender='noreply@nautilustechnologies.tech',
@@ -190,15 +226,12 @@ Hello,
 Thank you for taking out time to try to Cloud Help Provider (CHP).
             
                                                 CHP Team  
-             '''
+            '''
             mail.send(msg)
             session['mail']=user.company_email
             return redirect(url_for('message',message=user.company_email)) 
-        if not search:
-            db.session.add(user)
-            db.session.commit()
-            path=session['urls'].rsplit('/','1')[-1]
-            query=Child1.query.filter_by(id=path).first()
+        if illegal_path == '/answer':
+            query=Answer.query.filter_by(branch2_id=path).first()
             email=user.company_email
             msg = Message('Your Cloud Help Provider Test Result',
             sender='noreply@nautilustechnologies.tech',
@@ -206,13 +239,14 @@ Thank you for taking out time to try to Cloud Help Provider (CHP).
             msg.body=f'''
 Hello,
 {query.mail_response}
+
 Thank you for taking out time to try to Cloud Help Provider (CHP).
             
                                                 CHP Team  
-             '''
+            '''
             mail.send(msg)
-            naut_email(user)
-            return redirect(url_for('message',message=user.company_email))  
+            session['mail']=user.company_email
+            return redirect(url_for('message',message=user.company_email)) 
        
     return render_template('email-collection.html',path=path)
 
