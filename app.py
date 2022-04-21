@@ -45,6 +45,14 @@ def before_request():
         g.user = session['urls']
     elif 'mail' in session:
         g.mail = session['mail']
+
+@login_manager.unauthorized_handler
+def unauthorized_callback():
+    return redirect(url_for('parent'))
+@app.errorhandler(404)
+def page_not_found(e):
+    return redirect(url_for('parent'))
+    
 @app.route('/')
 def index():
     session['urls']=request.path
@@ -68,11 +76,14 @@ def child1():
     options=request.form.getlist('check',None)
     print(options)
     if len(options) == 1:
-        return redirect(url_for('question2',id=options))
+        flash('select two option','danger')
+        abort(404)
     if len(options) == 0:
-        return redirect(url_for('prompt'))
+        flash('select two option','danger')
+        abort(404)
     if len(options) > 3:
-        pass
+        flash('select two option','danger')
+        abort(404)
     headings=Heading.query.join(Heading.parent).filter(Parent.id.in_(options)).first()
     return render_template('chp_4.html',headings=headings)
 
