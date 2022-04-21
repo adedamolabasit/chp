@@ -76,13 +76,13 @@ def child1():
     options=request.form.getlist('check',None)
     print(options)
     if len(options) == 1:
-        flash('select two option','danger')
+        flash('select two responses','danger')
         abort(404)
     if len(options) == 0:
-        flash('select two option','danger')
+        flash('select two responses','danger')
         abort(404)
     if len(options) > 3:
-        flash('select two option','danger')
+        flash('select two responses','danger')
         abort(404)
     headings=Heading.query.join(Heading.parent).filter(Parent.id.in_(options)).first()
     return render_template('chp_4.html',headings=headings)
