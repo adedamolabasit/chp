@@ -15,7 +15,7 @@
     </div>
     {% for items in query %}
     <a href="{{ url_for('question2',id=items.id) }}">
-    <div class="btn btn-light d-flex justify-content-center shadow-sm mt-1 py-1 " style="border-color:#5f36d9; border-radius: 66px; padding:2px; " >     
+    <div class="btn btn-light d-flex justify-content-center shadow-md mt-1 py-1 mx-4" style="border-color:#5f36d9; border-radius: 66px; padding:2px; "  >     
       <p class="">{{ items.question }}</p>
     </div>
           </a>

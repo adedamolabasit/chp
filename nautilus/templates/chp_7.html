@@ -9,11 +9,12 @@
     {% for lists in query %}
     <div class="div-block-24 third-page">
       <div class="text-block-18 second-page third">
-        <h3 class="text-center">
-         How would your organization prefer to handle {{ lists.question }}
-        </h3>
+     
         </div>
     </div>
+    <h3 class="text-center mt-5 mb-3">
+      How would your organization prefer to handle {{ lists.question }}
+     </h3>
     {% for queries in lists.branch2 %}
       <a href="{{ url_for('answer',question2_id=queries.id) }}">
     <div class="btn btn-light d-flex justify-content-center shadow-sm mt-1 py-1 " style="border-color:#5f36d9; border-radius: 66px; padding:2px; " >     
@@ -24,7 +25,7 @@
       </a>
     {% endfor %}
     {% endfor %}
-    <div class="mt-3 ml-3" style="float: left;">
+    <div class="ml-3" style="float: left; margin-top: 81px;">
       <a href="{{ url_for('question2',id=back) }}" type="submit" class="btn btn-light" style="border-radius: 51px;"  ><i class="fa-solid fa-angle-left fa-2x"></i></a>
     </div>
   </div>

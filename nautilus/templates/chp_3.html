@@ -12,28 +12,28 @@
         </div>
       <div class="div-block-24 third-page">
         <div class="text-block-18 second-page third">
-          <h4 class="text-center">
+          <h3z class="text-center">
           What is critical to your organization when migrating to the cloud?</div>
-          </h4>
+          </h3>
         </div>
     <form action="/options" method="POST" id="chp">
       {% for queries in query %}
       <div class="div-block-1 second-page _18">
 
-          <div class="btn btn-light d-flex justify-content-center shadow-sm mt-1 py-1 " style="border-color:#5f36d9; border-radius: 66px; padding:2px; " >
+          <div class="checkbox_option btn btn-light d-flex justify-content-center shadow-sm mt-1 py-1 " style="border-color:#5f36d9; border-radius: 66px; padding:2px; " >
           
-         <p class="mx-1">{{ queries.question }}</p>
-          <!-- <span style="float:right" class="checkbox-group ml-2"> -->
-            <input value="{{ queries.id }}" type="checkbox" name="check" class="acb" />
-          <!-- </span> -->
+         <p class="" for="queries.id">{{ queries.question }}</p>
+          <span style="float:right" class="checkbox-group ml-2">
+            <input value="{{ queries.id }}" type="checkbox" name="check" class="acb" id="hidden" />
+          </span>
         </div>
       </div>
       {% endfor %}
       <div class="mt-3" style="float: right;">
-        <button type="submit" class=" btn btn-light" style="border-radius: 51px;" ><i class="fa-solid fa-angle-right fa-2x"></i></button>
+        <button type="submit" class="btn-light" style="border-radius: 51px;" ><i class="fa-solid fa-angle-right fa-2x"></i></button>
       </div>
       <div class="mt-3" style="float: left;">
-        <a href="{{ url_for('prompt')}}" type="submit" class="btn btn-light" style="border-radius: 51px;"  ><i class="fa-solid fa-angle-left fa-2x"></i></a>
+        <a href="{{ url_for('prompt')}}" type="submit" class="btn-light" style="border-radius: 51px;"  ><i class="fa-solid fa-angle-left fa-2x"></i></a>
       </div>
     </form>
     </div>

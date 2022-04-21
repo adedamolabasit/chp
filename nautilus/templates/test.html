@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+{% for query in queries %}
+
+    <div id="checkbox_options">
+        <div class="checkbox_option">
+            <input type="checkbox" name="category[]" value="{{ query.id}}" id="{{ query.id }}" />
+            <label for="{{ query.id }}">{{ query.question }}</label>
+        </div>
+        </div>
+{% endfor %}  
+        <div class="checkbox_option">
+            <input type="checkbox" name="category[]" value="2" id="cat_2" />
+            <label for="cat_2">Category 2</label>
+        </div>
+    
+        <div class="checkbox_option">
+            <input type="checkbox" name="category[]" value="3" id="cat_3" />
+            <label for="cat_3">Category 3</label>
+        </div>
+    
+        <div class="checkbox_option">
+            <input type="checkbox" name="category[]" value="4" id="cat_4" />
+            <label for="cat_4">Category 4</label>
+        </div>
+    
+        <div class="checkbox_option">
+            <input type="checkbox" name="category[]" value="{{ query.query1.id }}" id="{{ query.query1.id}}" />
+            <label for="cat_5">{{ query.query1.question }}</label>
+
+
+            <script>
+                $(document).ready(function(){
+            // Check/uncheck checkboxes clicking on its parent div
+            $(".checkbox_option").click(function(event){
+                var chk = $(this).find("input[type='checkbox']");
+                if(chk.prop("checked") == false)
+                {
+                    chk.prop("checked", true);
+                }
+                else
+                {
+                    chk.prop("checked", false);
+                }
+            });
+        $('.checkbox_option input[type="checkbox"]').click(function(event){
+                event.stopPropagation();
+            });
+        });
+          </script>
+</body>
+
+</html>

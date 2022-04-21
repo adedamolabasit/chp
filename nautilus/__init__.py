@@ -7,7 +7,7 @@ from flask_bcrypt import Bcrypt
 from flask_mail import Mail
 
 app=Flask(__name__)
-app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql://qhytskhqxcjpit:6f92d94296ca49b3ecb98f97164c05ad3e5d268c7684bed1650225c258d8c960@ec2-34-192-210-139.compute-1.amazonaws.com:5432/d96kl0p70jcngg'
+app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql://wtzyegodvafvqe:5592a0206fd4d997420f01e6201a345567756caea4f66488cec2381671be061a@ec2-3-212-45-192.compute-1.amazonaws.com:5432/d2ap268nr1oibk'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS']=True
 app.config['SECRET_KEY']='shfrfkenvrdgdg6djjguigv@ft'
 db=SQLAlchemy(app)

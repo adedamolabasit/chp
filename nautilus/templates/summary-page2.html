@@ -62,7 +62,9 @@
       </div>
       {% else %}
       <div>
-        <a href="{{ url_for('user') }}" class="text-info d-flex justify-content-center mt-2 text-center">Recieve a Full report in your inbox
+        <a href="{{ url_for('user') }}" class="text-info d-flex justify-content-center mt-2 text-center mx-1">Recieve a Full report in your inbox
+          <span><input type="checkbox"></span>
+          </a>
         </div> 
         {% endif %}    
     </div>
