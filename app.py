@@ -76,7 +76,7 @@ def child1():
     options=request.form.getlist('check',None)
     print(options)
     if len(options) == 1:
-        flash('select two responses','danger')
+        flash('select two responses','danger')  
         abort(404)
     if len(options) == 0:
         flash('select two responses','danger')
@@ -417,5 +417,7 @@ def confirm():
 
 
 
-if __name__ == "__main__":
-    app.run(debug=True)
+# if __name__ == "__main__":
+#     app.run(debug=True)
+if __name__ == '__main__':
+    app.run(debug=True, host='0.0.0.0', port=3000)

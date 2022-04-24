@@ -23,7 +23,12 @@
   <link href="satic/css/webflow.css" rel="stylesheet" type="text/css">
   <link href="static/css/nautilus-technologies.webflow.css" rel="stylesheet" type="text/css">
   <script src="https://ajax.googleapis.com/ajax/libs/webfont/1.6.26/webfont.js" type="text/javascript">
-  
+  var limit = 2;
+$('input.acb').on('change', function(evt) {
+   if($(this).siblings(':checked').length >= limit) {
+       this.checked = false;
+   }
+});
   </script>
 
   <script>
