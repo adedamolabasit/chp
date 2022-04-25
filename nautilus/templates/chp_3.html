@@ -3,6 +3,14 @@
 <script>
   $('span.checkbox-group.required :checkbox:checked').length > 0
 </script>
+<script>
+var limit = 2;
+$('input.checkbox').on('change', function(evt) {
+    if($('#checkboxes input.checkbox:checked').length > limit) {
+       this.checked = false;
+    }
+});
+</script>
 
 {% block content %}
   <div class="modal-1 third-page">

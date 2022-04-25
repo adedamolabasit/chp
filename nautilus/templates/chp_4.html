@@ -9,14 +9,14 @@
         </div>
       <div class="div-block-24 third-page">
         <div class="text-block-18 second-page third" style="margin-top: 81px;">
-            <h4 class="text-center">
+            <h4 class="text-cente">
             {{ headings.heading }}
             </h4>
         </div>
       </div>
       {% for x in headings.child1 %}
         <a href="{{ url_for('report',id=x.id) }}">
-            <div class="btn btn-light d-flex justify-content-center shadow-sm  py-1 " style="border-color:#5f36d9; border-radius: 66px; padding:2px; " >
+            <div class="btn btn-light d-flex justify-content-center shadow-sm  py-1 my-2 " style="border-color:#5f36d9; border-radius: 66px; padding:2px; " >
             <p>{{ x.question }}</p>       
             </div>
         </a>

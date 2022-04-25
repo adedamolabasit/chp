@@ -22,6 +22,7 @@ import re
 from jinja2 import evalcontextfilter
 from markupsafe import Markup, escape
 from flask_mail import Mail
+import time
 
 admin=Admin(app,template_mode='bootstrap3',name='Nautilus Admin')
 mail=Mail(app)
@@ -76,7 +77,8 @@ def child1():
     options=request.form.getlist('check',None)
     print(options)
     if len(options) == 1:
-        flash('select two responses','danger')  
+        flash('select two responses','danger') 
+        time.sleep(13) 
         abort(404)
     if len(options) == 0:
         flash('select two responses','danger')
