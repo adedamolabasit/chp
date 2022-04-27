@@ -4,9 +4,9 @@
 {% block content %}
 <div class="modal-1 second-page">
     <div class="modal-body second-page-2">
-      <div style="border-radius: 111px; padding:2px; float: right;margin-left: 51px;">
+      <!-- <div style="border-radius: 111px; padding:2px; float: right;margin-left: 51px;">
         <a href="{{ url_for('confirm')}}"><i class="fa-solid fa-circle-xmark fa-2x text-danger"></i></a>
-    </div>
+    </div> -->
       <div class="div-block-24 second-page">
         <div class="text-block-18 second-page">
            <!-- <h4 class="text-center"> -->
@@ -16,26 +16,31 @@
       </div>
       <div class="row d-flex justify-content-center mb-5 ml-2">
         <div>
-          <h4 class="text-center">
-            What best describes you?
+          <h4 class="d-flex justify-content-center" style="margin-top: 21px;">
+              What best describes you?
           </h4>
-        </div>
+           <div class="btn btn-light mx-5 text-center shadow-sm mt-1 py-1 " style="border-color:#5f36d9; border-radius: 66px; padding:2px; float:center;margin-left: 211px;" >     
           <a href="{{ url_for('question1') }}">
-          <div class="btn btn-light shadow-md mt-3 py-2 text-secondary text-center" style="border-color:#5a35c7; border-radius: 66px; padding:2px; " >
-         <p class="d-flex justify-content-center text-center text-secondary mx-1 px-3">
-         Little understanding of cloud computing
+          <!-- <div class="btn btn-light shadow-md mt-3 py-2 text-secondary text-center" style="border-color:#5a35c7; border-radius: 66px; padding:2px; " > -->
+            <p class="d-flex justify-content-center text-center text-secondary mx-1 px-3">
+         New to cloud computing
          </p>
-          </div>
-          </a>
-          <a href="{{ url_for('parent') }}">
-          <div class="btn btn-light  shadow-md mt-3 py-2 text-secondary " style="border-color:#5a35c7; border-radius: 66px; padding:2px;" >
-          <p class="text-center text-secondary mx-1 px-3">
-            Conversant with the cloud environment
-          </p>
-          </div>
           </a>
         </div>
-          <div class="mt-5 ml-3" style="float: left; margin-top: 51px;"> 
+        </div>
+      <div class="row">
+       
+            <div class="btn btn-light mx-5 text-center shadow-sm mt-1 py-1 " style="border-color:#5f36d9; border-radius: 66px; padding:2px; float:center" >              
+          <a href="{{ url_for('parent') }}">
+          <!-- <div class="btn btn-light  shadow-md mt-3 py-2 text-secondary " style="border-color:#5a35c7; border-radius: 66px; padding:2px;" > -->
+            <p class="text-center text-secondary mx-1 px-3">
+            Conversant with the cloud
+          </p>
+          </div>    
+          </a>
+        </div>
+        </div>
+          <div class="mt-5 " style="float: left; margin-top: 51px;"> 
             <a href="{{ url_for('index')}}" type="submit" class="btn btn-light" style="border-radius: 51px;"  ><i class="fa-solid fa-angle-left fa-2x"></i></a>
           </div>
 

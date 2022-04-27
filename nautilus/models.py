@@ -114,8 +114,8 @@ class Branch2(db.Model):
 class Answer(db.Model):
     id=db.Column(db.Integer,primary_key=True)
     question=db.Column(db.Text,nullable=True)
-    page_summary=db.Column(db.Text,nullable=True,default='hi')
-    mail_response=db.Column(db.Text,nullable=True,default='hi')
+    page_summary=db.Column(db.Text,nullable=True)
+    mail_response=db.Column(db.Text,nullable=True)
     branch2_id=db.Column(db.Integer,db.ForeignKey('branch2.id'),nullable='False')
     def __repr__(self):
         return f"{self.id}-{self.page_summary}"

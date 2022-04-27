@@ -169,7 +169,7 @@ def form1(id):
         if user != None:
             db.session.add(user)
             db.session.commit()
-            query=Answer.query.join(Branch2).filter_by(id=id).first()
+            query=Answer.query.filter_by(id=id).first()
             email=user.company_email
             msg = Message('Your Cloud Help Provider Test Result',
             sender='noreply@nautilustechnologies.tech',

@@ -9,11 +9,13 @@
         </div>
       <div class="div-block-24 third-page">
         <div class="text-block-18 second-page third" style="margin-top: 81px;">
-            <h4 class="text-cente">
-            {{ headings.heading }}
-            </h4>
+           
         </div>
       </div>
+      <h4 class="justify-content-center mb-3" style="margin-left:31px ; margin-right: 11px;">
+        {{ headings.heading }}
+        </h4>
+    <div style="margin-left: 31px;margin-right: 31px;">
       {% for x in headings.child1 %}
         <a href="{{ url_for('report',id=x.id) }}">
             <div class="btn btn-light d-flex justify-content-center shadow-sm  py-1 my-2 " style="border-color:#5f36d9; border-radius: 66px; padding:2px; " >
@@ -21,7 +23,8 @@
             </div>
         </a>
       {% endfor %}
-        <div class="ml-3" style="float: left; margin-top: 21px;">
+      </div>
+        <div class="" style="float: left; margin-top: 21px;">
             <a href="{{ url_for('parent')}}" type="submit" class="btn btn-light" style="border-radius: 51px;"  ><i class="fa-solid fa-angle-left fa-2x"></i></a>
           </div>
       </div>   

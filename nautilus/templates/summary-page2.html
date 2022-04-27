@@ -36,20 +36,26 @@
 <body>
   <div class="modal-1 summary-page">
     <div class="modal-body summary-page">
-      <div style="border-radius: 111px; padding:2px; float: right;margin-left: 51px;">
+      <!-- <div style="border-radius: 111px; padding:2px; float: right;margin-left: 51px;">
         <a href="{{ url_for('confirm')}}"><i class="fa-solid fa-circle-xmark fa-2x text-danger"></i></a>
-        </div>
-      <h2 class="heading-7 summary-page">Report</h2>
-      <div class="text-block-18 summary-page">{{ query.page_summary }}</div>
+        </div> -->
+
     <div class="row d-flex justify-content-center mt-1" style="float: center;">
+      <h2 class="heading-7 summary-page">Report</h2>
+    
+      <div class="text-block-18 summary-page justify-content-center mb-3">{{ query.page_summary }}</div>
         <a href="{{ url_for('prompt') }}" class="text-danger">
-      <div class="btn btn-light d-flex justify-content-left shadow-sm mt-1 py-1 px-4 mr-2 ml-1" style="border-color:#5f36d9; border-radius: 66px; padding:2px; float: right;" >
-          Restart
+      <div class="btn btn-light mx-2 px-1" style="border-color:#5f36d9; border-radius: 66px; padding:2px;" >
+          <h6>
+            Restart
+          </h6>
     </div>
       </a>
         <a href="https://calendly.com/adedayoakinpelu/15min?month=2022-03" class="text-success">
-      <div class="btn btn-light d-flex justify-content-right shadow-sm mt-1 py-1 px-4 ml-2" style="border-color:#5f36d9; border-radius: 66px; padding:2px; float: left;" >
+      <div class="btn btn-light mx-2 px-1" style="border-color:#5f36d9; border-radius: 66px; padding:2px;" >
+        <h6>
           Speak to an Expert
+        </h6>  
       </div>
     </a>
     </div>
@@ -58,9 +64,9 @@
       </div>
     
       <div>
-        <p class="text-info d-flex justify-content-center  text-center mt-2">Recieve a full report
+        <h4 class="d-flex justify-content-center  text-center mt-2">Recieve a full report
           <span><a href="{{ url_for('form1',id=back) }}"><img src="{{ url_for('static',filename='naut/square.png')}}" height="12px" width="12px" alt="check" class="mx-1"></a></span>    
-        </p>
+        </h4>
 
         </div> 
       

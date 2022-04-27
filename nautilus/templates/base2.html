@@ -24,13 +24,7 @@
   <link href="static/css/nautilus-technologies.webflow.css" rel="stylesheet" type="text/css">
   <script src="https://ajax.googleapis.com/ajax/libs/webfont/1.6.26/webfont.js" type="text/javascript">
   var limit = 2;
-$('input.acb').on('change', function(evt) {
-   if($(this).siblings(':checked').length >= limit) {
-       this.checked = false;
-   }
-});
   </script>
-
   <script>
     $(document).ready(function() {
     setInterval(function() {
@@ -534,7 +528,7 @@ input[type=checkbox]:checked:after {
   <!-- [if lte IE 9]><script src="https://cdnjs.cloudflare.com/ajax/libs/placeholders/3.0.2/placeholders.min.js"></script><![endif] -->
   
   
-  <!-- <script>
+  <script>
     $('#chp').on("submit", function (e) {
       var arr = $(this).serialize().toString();
       if(arr.indexOf("check") < 0){
@@ -542,17 +536,7 @@ input[type=checkbox]:checked:after {
           alert("Select Two Responses");
       }
   });
-  </script> -->
-  
-
-<script>
-  $('input[type=checkbox]').on('change', function (e) {
-  if ($('input[type=checkbox]:checked').length > 2) {
-      $(this).prop('checked', false);
-      alert("Sorry you can only select two at a time");
-  }
-});
-</script>
+  </script>
 
    <script>
     $(document).ready(function(){
@@ -579,24 +563,21 @@ $('.checkbox_option input[type="checkbox"]').click(function(event){
 });
 });
 </script>
+
 <script>
-      var totChecks = 0;
-        $('.check_box_option').on('change', function() {
-              if($(this).prop("checked") == true)
-              {
-                 if(totChecks > 2){
-                   /*cancel your action*/
-                   console.log("too many checks!");
-                   return false;
-                 }
-                 /*otherwise, proceed*/
-                 totChecks = totChecks + 1;
-              }
-             else //checkbox is unchecked, so remove a point from totChecks.
-              {
-                totChecks = totChecks - 1;
-              }
-        });
+  var heading = $("#header");
+  setInterval(function() {
+    if (heading.style.display == "block") { heading.style.display = "none"; }
+    else if (heading.style.display == "none") { heading.style.display = "block"; }
+  }, 1000);
+</script>
+<script>
+  var limit = 2;
+  $('input.checkbox').on('change', function(evt) {
+      if($('#checkboxes input.checkbox:checked').length > limit) {
+         this.checked = false;
+      }
+  });
 </script>
 </body>
 </html>

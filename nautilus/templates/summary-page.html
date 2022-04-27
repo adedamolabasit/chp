@@ -36,33 +36,40 @@
 <body>
   <div class="modal-1 summary-page">
     <div class="modal-body summary-page">
-      <div style="border-radius: 111px; padding:2px; float: right;margin-left: 51px;">
+      <!-- <div style="border-radius: 111px; padding:2px; float: right;margin-left: 51px;">
         <a href="{{ url_for('confirm')}}"><i class="fa-solid fa-circle-xmark fa-2x text-danger"></i></a>
-        </div>
+        </div> -->
+
+    <div class="row d-flex justify-content-center mt-1" style="float: center;">
       <h2 class="heading-7 summary-page">Report</h2>
-      <div class="text-block-18 summary-page">{{ query.page_summary }}</div>
-    <div class="row d-flex justify-content-center mt-1">
-      <a href="{{ url_for('prompt') }}" class="text-danger">
-      <div class=" btn-light shadow-sm mt-1 py-1 px-4 mr-2" style="border-color:#5f36d9; border-radius: 66px; padding:2px; float: right;" >
-          Restart
+    
+      <div class="text-block-18 summary-page justify-content-center mb-3">{{ query.page_summary }}</div>
+        <a href="{{ url_for('prompt') }}" class="text-danger">
+      <div class="btn btn-light mx-2 px-1" style="border-color:#5f36d9; border-radius: 66px; padding:2px;" >
+          <h6>
+            Restart
+          </h6>
     </div>
-  </a>
-    <a href="https://calendly.com/adedayoakinpelu/15min?month=2022-03" class="text-success">
-      <div class="btn-light shadow-sm mt-1 py-1 px-4 ml-2" style="border-color:#5f36d9; border-radius: 66px; padding:2px; float: left;" >
+      </a>
+        <a href="https://calendly.com/adedayoakinpelu/15min?month=2022-03" class="text-success">
+      <div class="btn btn-light mx-2 px-1" style="border-color:#5f36d9; border-radius: 66px; padding:2px;" >
+        <h6>
           Speak to an Expert
+        </h6>  
       </div>
-   </a>
+    </a>
     </div>
       <div class="mt-2 ml-3" style="float: left;">
-        <!-- <a href="../" type="submit" class="btn-light" style="border-radius: 51px;"  ><i class="fa-solid fa-angle-left fa-2x"></i></a> -->
+        <!-- <a href="{{ url_for('prompt')}}" type="submit" class="btn-light" style="border-radius: 51px;"  ><i class="fa-solid fa-angle-left fa-2x"></i></a> -->
       </div>
     
-        <div>
-          <p class="text-info d-flex justify-content-center  text-center mt-2">Recieve a Full report
-            <span><a href="{{ url_for('form1',id=query.id) }}"><img src="{{ url_for('static',filename='naut/square.png')}}" height="12px" width="12px" alt="check" class="mx-1"></a></span>
-          </p>
-          </div>  
-         
+      <div>
+        <h4 class="d-flex justify-content-center  text-center mt-2">Recieve a full report
+          <span><a href="{{ url_for('form1',id=query.id) }}"><img src="{{ url_for('static',filename='naut/square.png')}}" height="12px" width="12px" alt="check" class="mx-1"></a></span>    
+        </h4>
+
+        </div> 
+      
     </div>
   </div>
  
@@ -70,31 +77,30 @@
     <div class="navigation-1">
       <div class="menu-wrapper">
         <div class="container w-container">
-          <div class="menu-griud">
-            <div id="w-node-_2c529e47-cfa9-6d0f-75f8-bc9c28df6717-28df66c7" class="menu-part">
-              <a href="index.html" class="nav-link w-inline-block">
-                <div>Home</div>
-              </a>
-              <a href="home-ii-no-cart-navigation.html" class="nav-link w-inline-block">
-                <div>Home <span class="text-span">(No Cart)</span></div>
-              </a>
-              <a href="about.html" class="nav-link w-inline-block">
-                <div>About</div>
-              </a>
-              <a href="portfolio.html" class="nav-link w-inline-block">
-                <div>Projects</div>
-              </a>
-              <a href="shop.html" class="nav-link w-inline-block">
-                <div>Shop</div>
-              </a>
-              <a href="blog.html" class="nav-link w-inline-block">
-                <div>Blog</div>
-              </a>
-              <a href="contact.html" class="nav-link w-inline-block">
-                <div>contact</div>
-              </a>
-              <div class="line-divider"></div>
-            </div>
+          <div id="w-node-_2c529e47-cfa9-6d0f-75f8-bc9c28df6717-28df66c7" class="menu-part">
+            <a href="index.html" class="nav-link w-inline-block">
+              <div>Home</div>
+            </a>
+            <a href="home-ii-no-cart-navigation.html" class="nav-link w-inline-block">
+              <div>Home <span class="text-span">(No Cart)</span></div>
+            </a>
+            <a href="about.html" class="nav-link w-inline-block">
+              <div>About</div>
+            </a>
+            <a href="portfolio.html" class="nav-link w-inline-block">
+              <div>Projects</div>
+            </a>
+            <a href="shop.html" class="nav-link w-inline-block">
+              <div>Shop</div>
+            </a>
+            <a href="blog.html" class="nav-link w-inline-block">
+              <div>Blog</div>
+            </a>
+            <a href="contact.html" class="nav-link w-inline-block">
+              <div>contact</div>
+            </a>
+            <div class="line-divider"></div>
+          </div>
             <div class="project-part">
               <div>
                 <h1 class="title-wrapper">Featured Project</h1>
