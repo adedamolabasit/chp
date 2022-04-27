@@ -62,13 +62,15 @@
       <div class="mt-2 ml-3" style="float: left;">
         <!-- <a href="{{ url_for('prompt')}}" type="submit" class="btn-light" style="border-radius: 51px;"  ><i class="fa-solid fa-angle-left fa-2x"></i></a> -->
       </div>
-    
+    {% if active %}
+    <div></div>
+    {% else %}
       <div>
         <h4 class="d-flex justify-content-center  text-center mt-2">Recieve a full report
           <span><a href="{{ url_for('form1',id=query.id) }}"><img src="{{ url_for('static',filename='naut/square.png')}}" height="12px" width="12px" alt="check" class="mx-1"></a></span>    
         </h4>
-
         </div> 
+    {% endif %}
       
     </div>
   </div>
