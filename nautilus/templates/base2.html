@@ -69,6 +69,44 @@
   margin-left: 25px;
   border: 1px solid blue;
 }
+#getInfo {
+    position: relative;
+    display: inline-block;
+    border-bottom: 1px dotted black;
+}
+
+#getInfo .yourTooltip {
+    visibility: hidden;
+    width: 320px;
+    background-color: #555;
+    color: #fff;
+    text-align: center;
+    border-radius: 6px;
+    padding: 5px 10px;
+    position: absolute;
+    z-index: 1;
+    bottom: 125%;
+    left: 50%;
+    margin-left: -160px;
+    opacity: 0;
+    transition: opacity 1s;
+}
+
+#getInfo .yourTooltip::after {
+    content: "";
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    margin-left: -15px;
+    border-width: 15px;
+    border-style: solid;
+    border-color: #555 transparent transparent transparent;
+}
+
+#getInfo:hover .yourTooltip {
+    visibility: visible;
+    opacity: 1;
+}
  /* new */
 /* input[type=checkbox] {
   position: absolute;

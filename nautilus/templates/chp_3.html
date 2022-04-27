@@ -3,6 +3,10 @@
 <script>
   $('span.checkbox-group.required :checkbox:checked').length > 0
 </script>
+<style>
+  
+
+</style>
 {% block content %}
   <div class="modal-1 third-page">
     <div class="modal-body third-page">
@@ -23,8 +27,9 @@
     <div style="margin-left: 41px;margin-right: 41px;">
         {% for queries in query %}
         <div class="div-block-1 second-page _18">
-          <div class="checkbox_option btn btn-light d-flex justify-content-center shadow-sm mt-1 py-1 " style="border-color:#5f36d9; border-radius: 66px; padding:2px; " >      
-         <p class="" for="queries.id">{{ queries.question }}</p>
+          <div class="checkbox_option btn btn-light d-flex justify-content-center shadow-sm mt-1 py-1 " id="getInfo" style="border-color:#5f36d9; border-radius: 66px; padding:2px; " >
+      <p class="yourTooltip">Please select two responses</p> 
+        <a href="" title="Select Two Responses"> <p class="" for="queries.id">{{ queries.question }}</p> </a>
           <span style="float:right" class="checkbox-group ml-2">
             <input class="acb" value="{{ queries.id }}" type="checkbox" name="check"  id="hidden" />
           </span>
