@@ -77,7 +77,7 @@
 
 #getInfo .yourTooltip {
     visibility: hidden;
-    width: 320px;
+    width: 150px;
     background-color: #555;
     color: #fff;
     text-align: center;
@@ -87,7 +87,7 @@
     z-index: 1;
     bottom: 125%;
     left: 50%;
-    margin-left: -160px;
+    margin-left: -75px;
     opacity: 0;
     transition: opacity 1s;
 }
@@ -617,5 +617,27 @@ $('.checkbox_option input[type="checkbox"]').click(function(event){
       }
   });
 </script>
+
+<script>
+$( ".acb" ).on( "click", function() {
+  if($( ".number:checked" ).length > 1)
+  {
+    $('#chp').prop('disabled', false);
+  }
+  else
+  {
+    $('#chp').prop('disabled', true);
+  }  
+});
+</script>
+
+
+
+
+
+
+
+
+
 </body>
 </html>
