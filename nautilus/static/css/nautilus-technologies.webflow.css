@@ -2140,9 +2140,19 @@ h4 {
   margin-top: 10px;
   margin-bottom: 10px;
   font-family: 'PT Serif', serif;
-  font-size: 18px;
+  font-size: 15px;
   line-height: 18px;
   font-weight: 600;
+}
+@media only screen and (min-width: 600px){
+h4 {
+  margin-top: 10px;
+  margin-bottom: 10px;
+  font-family: 'PT Serif', serif;
+  font-size: 18px;
+  line-height: 21px;
+  font-weight: 600;
+}
 }
 
 h5 {
@@ -2165,11 +2175,20 @@ p {
   margin-bottom: 10px;
   font-family: 'PT Serif', serif;
   color: #000;
-  font-size: 11px;
+  font-size: 10px;
   line-height: 30px;
   font-weight: 300;
 }
-
+@media only screen and (min-width: 600px){
+  p {
+    margin-bottom: 10px;
+    font-family: 'PT Serif', serif;
+    color: #000;
+    font-size: 15px;
+    line-height: 24px;
+    font-weight: 300;
+  }
+  }
 ul {
   margin-top: 0px;
   margin-bottom: 10px;
