@@ -23,19 +23,20 @@
     <div style="margin-left: 41px;margin-right: 41px;">
         {% for queries in query %}
         <div class="div-block-1 second-page _18">
-          <div class="checkbox_option btn btn-light d-flex justify-content-center shadow-sm mt-1 py-1 " style="border-color:#5f36d9; border-radius: 66px; padding:2px; " >
-     
+      <div class="parent checkbox_option btn btn-light d-flex justify-content-center shadow-sm mt-2 py-1 " style="border-color:#5f36d9; border-radius: 66px; padding:2px; " >     
       <p class="" for="queries.id">{{ queries.question }}</p>
-          <span style="float:right" class="checkbox-group ml-2">
-            <input class="acb" value="{{ queries.id }}" type="checkbox" name="check"  id="hidden" />
+          <span style="float:right" class="checkbox-group ml-2" id="hidden">
+            <input class="acb" value="{{ queries.id }}" type="checkbox"  name="check"/>
           </span>
         </div>
       </div>
       {% endfor %} 
     </div>
 
-      <div class="mt-2 " style="float: right;" id="hide">
-        <button type="submit" class="btn btn-light" id="chp" style="border-radius: 51px;" ><i class="fa-solid fa-angle-right fa-2x"></i></button>
+      <div class="abc mt-2" style="float: right;" id="hide">
+        <button type="submit" class="btn btn-light" id="chp" style="border-radius: 51px;" >
+          <i class="fa-solid fa-angle-right fa-2x"></i>
+        </button>
       </div>
       <div class="mt-2" style="float: left;">
         <a href="{{ url_for('prompt')}}" type="submit" class="btn btn-light" style="border-radius: 51px;"  ><i class="fa-solid fa-angle-left fa-2x"></i></a>
