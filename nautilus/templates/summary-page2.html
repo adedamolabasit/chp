@@ -41,42 +41,24 @@
         </div> -->
 
     <div class="row d-flex justify-content-center mt-1" style="float: center;">
-      <h2 class="heading-7 summary-page">Report</h2>
+      <h2 class="heading-7 summary-page"></h2>
     
-      <div class="text-block-18 summary-page justify-content-center mb-3">{{ query.page_summary }}</div>
+      <div class="text-block-18 summary-page"></div>
+    </div>
       <div>
-      <a href="{{ url_for('prompt') }}" class="text-danger">
-      <div class="btn btn-light mx-2 px-1" style="border-color:#5f36d9; border-radius: 66px; padding:2px;" >
-          <h6>
-            Restart
-          </h6>
-    </div>
-      </a>
-    </div>
-    <div>
-        <a href="https://calendly.com/adedayoakinpelu/15min?month=2022-03" class="text-success">
-      <div class="btn btn-light mx-2 px-1" style="border-color:#5f36d9; border-radius: 66px; padding:2px;" >
-        <h6>
-          Speak to an Expert
-        </h6>  
-      </div>
-    </a>
-    </div>
-    </div>
-      <div class="mt-2 ml-3" style="float: left;">
-        <!-- <a href="{{ url_for('prompt')}}" type="submit" class="btn-light" style="border-radius: 51px;"  ><i class="fa-solid fa-angle-left fa-2x"></i></a> -->
-      </div>
-    {% if active  %}
-    <div></div>
-    {% else %}
-      <div>
+        <h2 class="d-flex justify-content-center">Report</h2>
+        <p class="d-flex justify-content-center">{{ query.page_summary }}</p>
         <h4 class="d-flex justify-content-center  text-center mt-2">Recieve a full report
           <span><a href="{{ url_for('form1',id=back) }}"><img src="{{ url_for('static',filename='naut/square.png')}}" height="12px" width="12px" alt="check" class="mx-1"></a></span>    
         </h4>
         </div> 
-      {% endif %}
-      
+     
+      <div class="row d-flex justify-content-center ">
+        <a href="{{ url_for('prompt')}}"><div style="float: right; border-color:#5a35c7; border-radius: 66px;" class="btn mx-2 text-secondary margin">Restart</div></a>
+        <a href="https://calendly.com/adedayoakinpelu/15min?month=2022-03"><div style="float:left; border-color:#5a35c7; border-radius: 66px;" class="btn mx-2 text-secondary">Speak to an Expert</div></a>
+      </div>
     </div>
+  
   </div>
  
   <div class="page-content">
