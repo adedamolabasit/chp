@@ -1,6 +1,6 @@
 ## Cloud Helper Provider (Python 3.10.1 Flask 2.0.2 Werkzeug 2.0.2)
 
-This is the Cloud Helper Provider service
+This is the Cloud Helper Provider
 
 ## Setup
 
@@ -24,6 +24,10 @@ This section will guide you through the setup process required to get up and run
 
 3. Install Flask
 - Run `pip install Flask`
+
+4. Install Dependencies
+` pip install -r requirements.txt
+
 
 #### Database Setup
 1. Run `flask db migrate`
