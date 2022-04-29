@@ -1,4 +1,4 @@
 ##  Root Folder
-** CHP **
+* CHP
 ## Dependencies
-**requirements.txt**
+* requirements.txt
