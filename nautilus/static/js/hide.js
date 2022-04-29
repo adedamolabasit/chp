@@ -17,15 +17,10 @@ for (let i = 0; i < checkboxArray.length; i++) {
 
     }else {
         checkboxArray[i].checked === false;
-        // count--;
         if (count !== 0) {
       count--;
     }
     }
-
-    // if (!checkboxArray[i].checked && count !== 0) {
-    //   count--;
-    // }
     if (count == 2) {
       heading.classList.add("show");
     } else {

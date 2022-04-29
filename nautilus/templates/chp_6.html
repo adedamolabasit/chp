@@ -18,7 +18,7 @@
     {% for lists in query %}
     {% for queries in lists.answer1 %}
       <a href="{{ url_for('question3',question1_id=queries.id) }}" class="">
-        <div class="btn btn-light d-flex justify-content-center shadow-sm  py-1 " style="border-color:#5f36d9; border-radius: 66px; padding:2px; margin-top: 11px; margin-left: 51px; margin-right: 51px;" >     
+        <div class="btn btn-light d-flex justify-content-center shadow-sm mt-2 py-1 " style="border-color:#5f36d9; border-radius: 66px; padding:2px; margin-top: 11px; margin-left: 51px; margin-right: 51px;" >     
             <p class="mx-1"> {{ queries.question }}</p>
         </div>
       </a>
