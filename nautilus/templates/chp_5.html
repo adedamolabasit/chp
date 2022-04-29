@@ -18,8 +18,8 @@
     </h4>
     <div style="margin-left: 21px;margin-right: 21px;">
     {% for items in query %}
-    <a href="{{ url_for('question2',id=items.id) }}">
-    <div class="btn btn-light d-flex justify-content-center shadow-md mt-2 py-1 mx-4" style="border-color:#5f36d9; border-radius: 66px; padding:2px; margin-left: 42px;"  >     
+    <a href="{{ url_for('question2',id=items.id) }}"style="text-decoration: none;" >
+    <div class="btn btn-light d-flex justify-content-center shadow-md mt-2 pt-2 mx-4" style="border-color:#5f36d9; border-radius: 66px; padding:2px; margin-left: 42px;"  >     
       <p class="">{{ items.question }}</p>
     </div>
           </a>

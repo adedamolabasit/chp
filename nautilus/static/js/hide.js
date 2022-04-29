@@ -13,19 +13,22 @@ for (let i = 0; i < checkboxArray.length; i++) {
     if (checkboxArray[i].checked === false) {
       checkboxArray[i].checked === true;
       count++;
-      console.log(count)
-
     }else {
         checkboxArray[i].checked === false;
         if (count !== 0) {
       count--;
     }
     }
-    if (count == 2) {
+    if (count === 2) {
       heading.classList.add("show");
-    } else {
+    } else if (count > 2)  {
       heading.classList.remove("show");
-    }
+      alert ("select two responses");  
+    
+    } else if (count === 1)  {
+        heading.classList.remove("show");
+       
+      }
   });
 }
 

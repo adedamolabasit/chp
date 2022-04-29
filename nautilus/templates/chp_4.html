@@ -5,7 +5,7 @@
   <div class="modal-1 third-page">
     <div class="modal-body third-page">
         <div style="border-radius: 111px; padding:2px; float: right;">
-            <a href="{{ url_for('confirm')}}"><i class="fa-solid fa-circle-xmark fa-2x text-danger"></i></a>
+            <a href="{{ url_for('confirm')}}"><i class="fa-solid fa-circle-xmark fa-2x text-danger" style="text-decoration: none;"></i></a>
         </div>
       <div class="div-block-24 third-page">
         <div class="text-block-18 second-page third" style="margin-top: 81px;">
@@ -17,15 +17,15 @@
         </h4>
     <div style="margin-left: 31px;margin-right: 31px;">
       {% for x in headings.child1 %}
-        <a href="{{ url_for('report',id=x.id) }}">
-            <div class="btn btn-light d-flex justify-content-center shadow-sm  py-1 my-2 " style="border-color:#5f36d9; border-radius: 66px; padding:2px; " >
+        <a href="{{ url_for('report',id=x.id) }}" style="text-decoration: none;">
+            <div class="btn btn-light d-flex justify-content-center shadow-sm  pt-2 my-2 " style="border-color:#5f36d9; border-radius: 66px; padding:2px; " >
             <p>{{ x.question }}</p>       
             </div>
         </a>
       {% endfor %}
       </div>
         <div class="" style="float: left; margin-top: 21px;">
-            <a href="{{ url_for('parent')}}" type="submit" class="btn btn-light" style="border-radius: 51px;"  ><i class="fa-solid fa-angle-left fa-2x"></i></a>
+            <a href="{{ url_for('parent')}}" type="submit" class="btn btn-light" style="border-radius: 51px; text-decoration: none;"  ><i class="fa-solid fa-angle-left fa-2x"></i></a>
           </div>
       </div>   
     </div>

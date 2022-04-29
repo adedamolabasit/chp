@@ -28,6 +28,20 @@ admin=Admin(app,template_mode='bootstrap3',name='Nautilus Admin')
 mail=Mail(app)
 class Controllers(ModelView):
     pass
+    def is_accessible(self):
+    
+        if current_user.is_active:
+            if current_user.permission is True:
+                return current_user.is_authenticated 
+            else:
+                abort(404)           
+        else: 
+            abort(404)
+   
+ 
+
+    def not_auth(self):
+        return " you are not authorized to use the Nautilus dashboard "
 
 admin.add_view(Controllers(Parent,db.session,name='ALL Double Collections'))
 admin.add_view(Controllers(Heading,db.session,name='Double Collections Headings'))
@@ -52,7 +66,7 @@ def unauthorized_callback():
     return redirect(url_for('parent'))
 @app.errorhandler(404)
 def page_not_found(e):
-    return redirect(url_for('parent'))
+    return redirect(url_for('index'))
     
 @app.route('/')
 def index():
@@ -126,9 +140,9 @@ def login():
             if user:
                 if bcrypt.check_password_hash(user.password1,form.password.data):
                     login_user(user)            
-                    return redirect(url_for('user'))
+                    return redirect(url_for('index'))
                 else:             
-                    return redirect(url_for('login'))
+                    return redirect(url_for('index'))
         return render_template('admin_signin.html',form=form)
     form=LoginForm()
     return render_template('admin_signin.html',form=form)
@@ -144,15 +158,15 @@ def register():
                 admin_user=AdminUser(email=email,password1=hashed_password)
                 db.session.add(admin_user)
                 db.session.commit()
-                return redirect(url_for('user'))
+                return redirect(url_for('index'))
         if request.method == 'GET':            
             return render_template('admin_signup.html',form=form)
     return render_template('admin_signup.html',form=form)
-
 @app.route('/logout')
+@login_required
 def logout():   
     logout_user()
-    return redirect(url_for('user'))
+    return redirect(url_for('index'))
 
 @app.route('/form1/<int:id>',methods=['GET','POST'])
 def form1(id):
