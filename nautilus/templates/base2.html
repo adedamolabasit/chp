@@ -584,46 +584,29 @@ input[type=checkbox]:checked:after {
    <script>
     $(document).ready(function(){
 // Check/uncheck checkboxes clicking on its parent div
-$(".checkbox_option").click(function(event){
-    var chk = $(this).find("input[type='checkbox']");
+$("div.parent").click(function(event){
+    var chk = $(this).find(".acb");
     if(chk.prop("checked") == false)
     {
         chk.prop("checked", true);
         // $(this).parent().css("background-color","silver");
-        $(this).closest('div.checkbox_option').css("background-color", "silver");
+        $(this).closest('div.parent').css("background-color", "silver");
     }
     else
     {
         chk.prop("checked", false);
         // $(this).parent().css("background-color","white");
-        $(this).closest('div.checkbox_option').css("background-color", "white");
+        $(this).closest('div.parent').css("background-color", "white");
 
 
     }
 });
-$('.checkbox_option input[type="checkbox"]').click(function(event){
+$('.parent .acb').click(function(event){
     event.stopPropagation();
 });
 });
 </script>
 
-<script>
-  var heading = $("#header");
-  setInterval(function() {
-    if (heading.style.display == "block") { heading.style.display = "none"; }
-    else if (heading.style.display == "none") { heading.style.display = "block"; }
-  }, 1000);
-</script>
-<script>
-  var limit = 2;
-  $('input.checkbox').on('change', function(evt) {
-      if($('#checkboxes input.checkbox:checked').length > limit) {
-         this.checked = false;
-      }
-  });
-</script>
-
-<
 
 
 <script>

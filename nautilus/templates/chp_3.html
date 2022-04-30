@@ -13,13 +13,14 @@
         <div class="text-block-18 second-page third">
           
         </div>
-        <form action="/options" method="POST" id="chp">
+        <form action="{{ url_for('child1') }}" method="POST" id="chp">
           <div class="">
-           
+          
             </div>
             <h4 class="justify-content-left" style="margin-left:51px ; margin-right: 41px;">
-              What is critical to your organization when migrating to the cloud?</div>
+              What are two crucial considerations you think about when migrating to the cloud?</div>
               </h4>
+              
     <div style="margin-left: 41px;margin-right: 41px;">
         {% for queries in query %}
         <div class="div-block-1 second-page _18">

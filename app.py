@@ -72,11 +72,11 @@ def page_not_found(e):
 def index():
     session['urls']=request.path
     return render_template('chp_1.html')
-@app.route('/prompt')
+@app.route('/cloud-environment')
 def prompt():
     session['urls']=request.path
     return render_template('chp_2.html')
-@app.route('/chp1')
+@app.route('/cloud-features')
 def parent():
     session['urls']=request.path
     # 8545 in css naut
@@ -85,7 +85,7 @@ def parent():
 
 
     return render_template('chp_3.html',query=queries)
-@app.route('/options',methods=["POST","GET"])
+@app.route('/cloud/features',methods=["POST","GET"])
 def child1():
     session['urls']=request.path
     options=request.form.getlist('check',None)
@@ -103,7 +103,7 @@ def child1():
     headings=Heading.query.join(Heading.parent).filter(Parent.id.in_(options)).first()
     return render_template('chp_4.html',headings=headings)
 
-@app.route('/report/<int:id>')
+@app.route('/summary2/<int:id>')
 def report(id):
     query=Child1.query.filter_by(id=id).first()
     if query is None:
@@ -375,17 +375,17 @@ def naut_email(user):
     Company mail = {email}
     company name = {name} '''
     mail.send(msg)
-@app.route('/features')
+@app.route('/cloud-feature')
 def question1():
     session['urls']=request.path
     query=Tree.query.all()
     return render_template('chp_5.html',query=query)
-@app.route('/features/<int:id>/')
+@app.route('/cloud-feature/<int:id>/')
 def question2(id):
     session['urls']=request.path
     query=db.session.query(Tree).join(Branch1).filter_by(tree_id=id).all()
     return render_template('chp_6.html',query=query)
-@app.route('/qs1/<int:question1_id>/branch2')
+@app.route('/cloud/<int:question1_id>')
 def question3(question1_id):
     session['urls']=request.path
     tree=Tree.query.join(Branch1).filter_by(id=question1_id).first()
@@ -393,7 +393,7 @@ def question3(question1_id):
     query=db.session.query(Branch1).join(Branch2).filter_by(branch1_id=question1_id).all()
     
     return render_template('chp_7.html',query=query,id=tree.id,back=back)
-@app.route('/answer/<int:question2_id>')
+@app.route('/summary-1/<int:question2_id>')
 def answer(question2_id):
     session['urls']=request.path
     illegal_path= session['urls'].rsplit('/',1)[-2]

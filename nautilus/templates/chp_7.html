@@ -12,8 +12,9 @@
      
         </div>
     </div>
-    <h4 class="justify-content-center  mb-3" style="margin-top: 81px; margin-left: 51px; margin-right: 51px;">
-      How would your organization prefer to handle {{ lists.question }}
+    <h4 class="justify-content-center  mb-3 " style="margin-top: 81px; margin-left: 51px; margin-right: 51px;">
+      How would your organization like the {{ lists.question }} to be handled?
+
      </h4>
     {% for queries in lists.branch2 %}
       <a href="{{ url_for('answer',question2_id=queries.id) }}" style="text-decoration: none;">
