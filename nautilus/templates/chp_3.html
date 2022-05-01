@@ -1,13 +1,27 @@
 {% extends 'base2.html' %}
+<script>
+  var myVar;
+
+function myFunction() {
+  myVar = setTimeout(function(){ alert("Hello"); }, 3000);
+}
+
+function myStopFunction() {
+  clearTimeout(myVar);
+}
+</script>
 {% block content %}
   <div class="modal-1 third-page">
     <div class="modal-body third-page">
-      <div  style="border-radius: 111px; padding:2px; float: right;margin-left: 51px;">
+      <div  style="border-radius: 111px; padding:2px; border: none; float: right;margin-left: 51px;">
         <a href="{{ url_for('confirm')}}"><i class="fa-solid fa-circle-xmark fa-2x text-danger"></i></a>
         </div>
-      <div id='getInfo' style="border: none; padding:2px;">
+      <div id='getInfo' class="shows" style="border: none; padding:2px;">
         <i class="fa-solid fa-circle-info fa-2x text-secondary"></i>
-        <p class="yourTooltip" id="this">Please select two responses</p> 
+        <p class="yourTooltip" id="this">Please select two responses</p>
+        <p class="abn text-light" id="this" >
+            please select two responses
+        </p> 
       </div>
       <div class="div-block-24 third-page">
         <div class="text-block-18 second-page third">
@@ -42,12 +56,6 @@
       <div class="mt-2" style="float: left;">
         <a href="{{ url_for('prompt')}}" type="submit" class="btn btn-light" style="border-radius: 51px;"  ><i class="fa-solid fa-angle-left fa-2x"></i></a>
       </div>
-      {% for category, message in get_flashed_messages(with_categories=true) %}
-      <div class="alert alert-{{ category }} alert-dismissible mt-2 text-center" id="header">
-          <a href="{{ url_for('parent')}}" class="close" data-dismiss="alert" aria-label="close">&times;</a>
-          <p>{{ message }}</p>
-      </div>
-      {% endfor %}     
       </div>
     
     </form>

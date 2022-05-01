@@ -89,6 +89,21 @@
     opacity: 0;
     transition: opacity 1s;
 }
+.abn {
+    width: 150px;
+    background-color: #555;
+    color: #fff;
+    text-align: center;
+    border-radius: 6px;
+    padding: 5px 0px;
+    position: absolute;
+    z-index: 1;
+    bottom: 125%;
+    left: 50%;
+    margin-left: -75px;
+    /* opacity: 0; */
+    transition: opacity 1s;
+}
 
 #getInfo .yourTooltip::after {
     content: "";
@@ -634,14 +649,14 @@ for (let i = 0; i < checkboxArray.length; i++) {
   });
 }
 
-
-
-
-
 </script>
 
 
-
+<script>
+  $(".abn").delay(4000).slideUp(200, function() {
+  $(this).alert('close');
+});
+</script>
 
 
 

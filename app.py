@@ -23,25 +23,36 @@ from jinja2 import evalcontextfilter
 from markupsafe import Markup, escape
 from flask_mail import Mail
 import time
+from flask_cors import CORS
 
 admin=Admin(app,template_mode='bootstrap3',name='Nautilus Admin')
 mail=Mail(app)
+
+@app.before_request
+def before_request():
+    g.user = None
+    g.mail=None
+    if 'urls' in session:
+        g.user = session['urls']
+    elif 'mail' in session:
+        g.mail = session['mail']
+
 class Controllers(ModelView):
     pass
-    def is_accessible(self):
+    # def is_accessible(self):
     
-        if current_user.is_active:
-            if current_user.permission is True:
-                return current_user.is_authenticated 
-            else:
-                abort(404)           
-        else: 
-            abort(404)
+    #     if current_user.is_active:
+    #         if current_user.permission is True:
+    #             return current_user.is_authenticated 
+    #         else:
+    #             abort(404)           
+    #     else: 
+    #         abort(404)
    
  
 
-    def not_auth(self):
-        return " you are not authorized to use the Nautilus dashboard "
+    # def not_auth(self):
+    #     return " you are not authorized to use the Nautilus dashboard "
 
 admin.add_view(Controllers(Parent,db.session,name='ALL Double Collections'))
 admin.add_view(Controllers(Heading,db.session,name='Double Collections Headings'))
@@ -52,14 +63,7 @@ admin.add_view(Controllers(Branch2,db.session,name='Sub Single Collection'))
 admin.add_view(Controllers(Answer,db.session,name='Single Collection Summary and Mail Summary'))
 admin.add_view(Controllers(ConfirmUser,db.session,name='User Email Collections'))
 admin.add_view(Controllers(AdminUser,db.session,name='Nautilus Administrator'))
-@app.before_request
-def before_request():
-    g.user = None
-    g.mail=None
-    if 'urls' in session:
-        g.user = session['urls']
-    elif 'mail' in session:
-        g.mail = session['mail']
+
 
 @login_manager.unauthorized_handler
 def unauthorized_callback():
@@ -70,15 +74,18 @@ def page_not_found(e):
     
 @app.route('/')
 def index():
-    session['urls']=request.path
     return render_template('chp_1.html')
 @app.route('/cloud-environment')
 def prompt():
     session['urls']=request.path
+    ml=session.get('mail',None)
+    pt=session.get('urls',None)
+    print(ml,pt)
+    print(g.user)
     return render_template('chp_2.html')
-@app.route('/cloud-features')
+@app.route('/cloud-features')   
 def parent():
-    session['urls']=request.path
+    session['urls']=request.path        
     # 8545 in css naut
    
     queries=Parent.query.order_by(Parent.id).all()
@@ -89,7 +96,7 @@ def parent():
 def child1():
     session['urls']=request.path
     options=request.form.getlist('check',None)
-    print(options)
+    
     if len(options) == 1:
         flash('select two responses','danger') 
         time.sleep(13) 
@@ -234,47 +241,13 @@ Hello,
             session['mail']=user.company_email
             return redirect(url_for('message',message=email))
     return render_template('form2.html')
-# @app.route('/form/<int:id>',methods=['GET','POST'])
-# def form2(id):
-#     if request.method == 'POST':
-#         first_name=request.form.get('First-Name',None)
-#         last_name=request.form.get('Last-Name',None)
-#         company_email=request.form.get('Company-Email',None)
-#         company_name=request.form.get('Company-Name',None)
-#         company_region=request.form.get('Company-Region',None)
-#         user=ConfirmUser(first_name=first_name,last_name=last_name,company_email=company_email,company_name=company_name,company_region=company_region)
-#         search=ConfirmUser.query.filter_by(company_email=company_email).first()
-#         if user != None:
-#             db.session.add(user)
-#             db.session.commit()
-#             query=Child1.query.filter_by(id=id).first()
-#             email=user.company_email
-#             msg = Message('Your Cloud Help Provider Test Result',
-#             sender='noreply@nautilustechnologies.tech',
-#             recipients=[email])
-#             msg.body=f'''
-#     Hello,
-#     {query.mail_response}
 
-#     Thank you for taking out time to try to Cloud Help Provider (CHP).
-                
-#                                                     CHP Team  
-#                 '''
-#             mail.send(msg)
-#             session['mail']=user.company_email
-#         return render_template('form2.html')
-
-# user
 @app.route('/report/form',methods=['GET','POST'])
 def user():
     paths=session.get('urls','/')
     path=paths.rsplit('/',1)[-1]
     illegal_path=paths.rsplit('/',1)[-2]
-    # print(illegal_path)
-    # if illegal_path != '/report':
-    #     return redirect(url_for('prompt'))
-    # if illegal_path != '/answer':
-    #     return redirect(url_for('prompt'))
+   
     if request.method == 'POST':
         first_name=request.form.get('First-Name',None)
         last_name=request.form.get('Last-Name',None)
@@ -365,7 +338,6 @@ def message(message):
 # email track
 def naut_email(user):
     session['urls']=request.path
-    
     email=user.company_email
     name=user.company_name
     msg = Message('Nautilus Notification',
@@ -421,11 +393,8 @@ Thank you for taking out time to try to Cloud Help Provider (CHP).
 # Terminate
 @app.route('/confirmation',methods=['POST','GET'])
 def confirm():
-    if request.method == 'POST':
-        confirm=request.form.get('confirm')
-        if confirm:
-            session.close()
     previous_url=session.get('urls')
+    print(previous_url)
     
 
     return render_template('confirm.html',previous_url=previous_url)
