@@ -39,20 +39,21 @@ def before_request():
 
 class Controllers(ModelView):
     pass
-    # def is_accessible(self):
+    def is_accessible(self):
     
-    #     if current_user.is_active:
-    #         if current_user.permission is True:
-    #             return current_user.is_authenticated 
-    #         else:
-    #             abort(404)           
-    #     else: 
-    #         abort(404)
+        if current_user.is_active:
+            if current_user.permission is True:
+                return current_user.is_authenticated 
+            else:
+                abort(404)  
+        else: 
+            abort(404)
+        
    
  
 
-    # def not_auth(self):
-    #     return " you are not authorized to use the Nautilus dashboard "
+    def not_auth(self):
+        return " you are not authorized to use the Nautilus dashboard "
 
 admin.add_view(Controllers(Parent,db.session,name='ALL Double Collections'))
 admin.add_view(Controllers(Heading,db.session,name='Double Collections Headings'))
